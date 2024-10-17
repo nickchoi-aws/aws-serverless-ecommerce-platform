@@ -29,6 +29,7 @@ def save_payment_token(order_id: str, payment_token: str) -> None:
     table.put_item(Item={
         "orderId": order_id,
         "paymentToken": payment_token
+        "password": "secretPassword"
     })
 
 @metrics.log_metrics(raise_on_empty_metrics=False)
