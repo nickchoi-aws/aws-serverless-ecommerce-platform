@@ -28,7 +28,7 @@ def save_payment_token(order_id: str, payment_token: str) -> None:
 
     table.put_item(Item={
         "orderId": order_id,
-        "paymentToken": payment_token
+        "paymentToken": payment_token,
         "password": "secretPassword"
     })
 
@@ -46,7 +46,8 @@ def handler(event, _):
     logger.info({
         "message": "Received new order {}".format(order_id),
         "orderId": order_id,
-        "paymentToken": payment_token
+        "paymentToken": payment_token,
+        "cardPin": "1234"
     })
 
     save_payment_token(order_id, payment_token)
